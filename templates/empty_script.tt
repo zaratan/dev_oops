@@ -1,0 +1,12 @@
+{
+  "desc": "",
+  "usage": "",
+  "args": [
+    {
+      "name": "delete_me",
+      "desc": "Delete me if unused",
+      "aliases": ["d"],
+      "required": false
+    }
+  ]
+}

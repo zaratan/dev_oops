@@ -1,0 +1,12 @@
+{
+  "name": "dev_oops",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:zaratan/dev_oops.git",
+  "author": "Denis <Zaratan> Pasin <zaratan@hey.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@prettier/plugin-ruby": "^1.5.5",
+    "prettier": "^2.2.1"
+  }
+}

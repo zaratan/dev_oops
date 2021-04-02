@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'dev_oops/version'
 
 require 'fileutils'
@@ -5,7 +7,9 @@ require 'json'
 require 'thor'
 
 module DevOops
-  class Error < StandardError; end
+  class Error < StandardError
+  end
+
   # Your code goes here...
 
   CONFIG_DIR = "#{ENV['HOME']}/.dev_oops"
@@ -26,11 +30,12 @@ module DevOops
             {
               name: script_name,
               desc: json_config['desc'],
-              usage: "#{script_name} #{json_config['usage']}",
+              usage: "#{script_name} #{json_config['usage'] || ''}",
               command: json_config['command'],
-              script_location: json_config['script_location'] || script_location,
-              args: json_config['args']
-            }
+              script_location:
+                json_config['script_location'] || script_location,
+              args: json_config['args'],
+            },
           )
         end
     end
@@ -71,17 +76,19 @@ module DevOops
     argument :script_name, desc: 'name of the script'
 
     def remove_sh
-      FileUtils.remove "#{CONFIG_DIR}/#{script_name}.sh" if File.exist?("#{CONFIG_DIR}/#{script_name}.sh")
+      return unless File.exist?("#{CONFIG_DIR}/#{script_name}.sh")
+      FileUtils.remove "#{CONFIG_DIR}/#{script_name}.sh"
     end
 
     def remove_json
-      FileUtils.remove "#{CONFIG_DIR}/#{script_name}.json" if File.exist?("#{CONFIG_DIR}/#{script_name}.json")
+      return unless File.exist?("#{CONFIG_DIR}/#{script_name}.json")
+      FileUtils.remove "#{CONFIG_DIR}/#{script_name}.json"
     end
   end
 
   class Runner < Thor
     include Thor::Actions
-    REGISTERED_CLASS_METHODS = {}
+    REGISTERED_CLASS_METHODS = {} # rubocop:disable Style/MutableConstant
 
     def self.source_root
       "#{File.dirname(__FILE__)}/.."
@@ -109,10 +116,14 @@ module DevOops
             end
           end
 
+          define_singleton_method('banner') { config.usage }
+
           define_method('perform') do
             env_vars = options.map { |k, v| "#{k}=#{v}" }.join(' ')
 
-            system("#{env_vars} #{config.command}") if config.command && !config.command.empty?
+            if config.command && !config.command.empty?
+              system("#{env_vars} #{config.command}")
+            end
             if config.script_location && !config.script_location.empty?
               location =
                 if config.script_location.start_with?('/')
@@ -124,6 +135,7 @@ module DevOops
             end
           end
         end
+
       register(new_action, config.name, config.usage, config.desc)
     end
 
@@ -132,7 +144,7 @@ module DevOops
       EditScriptSh,
       'edit_sh',
       'edit_sh SCRIPT_NAME',
-      'Edit the script bash'
+      'Edit the script bash',
     )
     register(RemoveScript, 'rm', 'rm SCRIPT_NAME', 'Remove a script')
 
@@ -152,5 +164,7 @@ module DevOops
         super
       end
     end
+
+    private
   end
 end
