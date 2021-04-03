@@ -1,6 +1,7 @@
+# frozen_string_literal: true
 module DevOops
   module ScriptsLoader
-    FORBIDDEN_NAMES = %w[help install edit edit_sh rm]
+    FORBIDDEN_NAMES = %w[help install edit edit_sh rm].freeze
     ScriptConfig =
       Struct.new(:name, :desc, :usage, :script_location, :args) do
         def self.create(script_name, script_location, json_config)

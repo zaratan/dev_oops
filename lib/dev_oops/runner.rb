@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module DevOops
   class Runner < Thor
     include Thor::Actions
