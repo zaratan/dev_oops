@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module DevOops
   module Commands
     class EditScript < Thor::Group

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module DevOops
   class Runner < Thor
     include Thor::Actions
@@ -25,13 +26,13 @@ module DevOops
       Commands::EditScript,
       'edit',
       'edit SCRIPT_NAME',
-      'Edit a script config',
+      'Edit a script config'
     )
     register(
       Commands::EditScriptSh,
       'edit_sh',
       'edit_sh SCRIPT_NAME',
-      'Edit the script bash',
+      'Edit the script bash'
     )
     register(Commands::RemoveScript, 'rm', 'rm SCRIPT_NAME', 'Remove a script')
 

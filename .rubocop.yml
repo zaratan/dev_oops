@@ -14,6 +14,7 @@ AllCops:
   SuggestExtensions: false
   Exclude:
     - "bin/*"
+    - 'vendor/**/*'
     - "node_modules/**/*"
 
 Gemspec/RequiredRubyVersion:
