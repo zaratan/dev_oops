@@ -26,7 +26,7 @@ jobs:
     - name: DEBUG
       run: which ruby
     - name: Run linter
-      run: bundle exec rubocop
+      run: rubocop
     - name: Run tests
       run: bundle exec rspec
   prettier:
