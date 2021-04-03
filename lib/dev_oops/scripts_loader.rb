@@ -1,6 +1,7 @@
+# frozen_string_literal: true
 module DevOops
   module ScriptsLoader
-    FORBIDDEN_NAMES = %w[help install edit edit_sh rm]
+    FORBIDDEN_NAMES = %w[help install edit edit_sh rm].freeze
     ScriptConfig =
       Struct.new(:name, :desc, :usage, :script_location, :args) do
         def self.create(script_name, script_location, json_config)
@@ -9,7 +10,7 @@ module DevOops
             json_config['desc'] || 'Missing description',
             "#{script_name} #{json_config['usage'] || ''}",
             script_location,
-            json_config['args'],
+            json_config['args']
           )
         end
       end
@@ -37,7 +38,7 @@ module DevOops
             desc: arg['desc'] || '',
             aliases: arg['aliases'] || [],
             required: arg['required'] || false,
-            default: arg['default'],
+            default: arg['default']
           )
         end
 
