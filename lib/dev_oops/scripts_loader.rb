@@ -10,7 +10,7 @@ module DevOops
             json_config['desc'] || 'Missing description',
             "#{script_name} #{json_config['usage'] || ''}",
             script_location,
-            json_config['args'],
+            json_config['args']
           )
         end
       end
@@ -38,7 +38,7 @@ module DevOops
             desc: arg['desc'] || '',
             aliases: arg['aliases'] || [],
             required: arg['required'] || false,
-            default: arg['default'],
+            default: arg['default']
           )
         end
 
