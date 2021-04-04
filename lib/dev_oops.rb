@@ -13,9 +13,6 @@ loader.setup # ready!
 module DevOops
   class Error < StandardError
   end
-
-  # TODO Refactor
-  CONFIG_DIR = "#{ENV['HOME']}/.dev_oops"
 end
 
 loader.eager_load

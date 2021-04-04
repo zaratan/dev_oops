@@ -4,6 +4,9 @@ module DevOops
     include Thor::Actions
     REGISTERED_CLASS_METHODS = {} # rubocop:disable Style/MutableConstant
 
+    CONFIG_DIR = "#{ENV['HOME']}/.dev_oops"
+    FileUtils.mkdir CONFIG_DIR unless Dir.exist?(CONFIG_DIR)
+
     def self.source_root
       "#{File.dirname(__FILE__)}/.."
     end
@@ -26,23 +29,24 @@ module DevOops
       Commands::EditScript,
       'edit',
       'edit SCRIPT_NAME',
-      'Edit a script config'
+      'Edit a script config',
     )
+
     register(
       Commands::EditScriptSh,
       'edit_sh',
       'edit_sh SCRIPT_NAME',
-      'Edit the script bash'
+      'Edit the script bash',
     )
+
     register(Commands::RemoveScript, 'rm', 'rm SCRIPT_NAME', 'Remove a script')
 
-    # contents of the Thor class
-    desc 'install', 'Create the neccesary directory for the gem'
-    def install
-      return if Dir.exist?(CONFIG_DIR)
-
-      FileUtils.mkdir CONFIG_DIR
-    end
+    register(
+      Commands::LocalInstall,
+      'install',
+      'install',
+      'Create the neccesary local directory for the gem',
+    )
 
     def help(subcommand = nil)
       if subcommand && respond_to?(subcommand)

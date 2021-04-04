@@ -4,7 +4,29 @@ This is a gem to help you manage all the scripts and repetitive commands you hav
 
 ## Installation
 
+There's 2 main ways to install and use this gem.
+
+### Global install
+
     $ gem install dev_oops && dev_oops install
+
+This will create a `$Home/.dev_oops` directory.
+
+### Local install
+
+Use the global `dev_oops` gem.
+
+#### Bundler way
+
+Add this gem to your Gemfile
+
+```
+gem 'dev_oops'
+```
+
+Then `bundle install` and run `bundle exec dev_oops local_install`.
+
+This will create a `./dev_oops` directory.
 
 ## Usage
 
