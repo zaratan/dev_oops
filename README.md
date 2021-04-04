@@ -8,15 +8,9 @@ There's 2 main ways to install and use this gem.
 
 ### Global install
 
-    $ gem install dev_oops && dev_oops install
+    $ gem install dev_oops
 
-This will create a `$Home/.dev_oops` directory.
-
-### Local install
-
-Use the global `dev_oops` gem.
-
-#### Bundler way
+### Bundler way
 
 Add this gem to your Gemfile
 
@@ -24,9 +18,7 @@ Add this gem to your Gemfile
 gem 'dev_oops'
 ```
 
-Then `bundle install` and run `bundle exec dev_oops local_install`.
-
-This will create a `./dev_oops` directory.
+Then `bundle install`
 
 ## Usage
 
@@ -73,13 +65,23 @@ dev_oops help hello # =>
 #                               # Default: Pierre
 ```
 
+### Script locations
+
+By default this gem will use the `$HOME/.dev_oops` directory to install configs and scripts.
+
+This gem will also try to find every `dev_oops` directory between the current directory and home and look for scripts in them.
+
+If there's a name collision, the closest to `current_dir` will be chosen.
+
+#### Creating a local directory
+
+`bundle exec dev_oops local_install`.
+
+This will create a `./dev_oops` directory.
+
 ### Commands
 
-Which editor will be opened by the gem
-
-#### install
-
-`dev_oops install` Will create the base directory needed for storing your scripts.
+Which editor will be opened by the gem is dictated by the `$EDITOR` environment variable.
 
 #### edit
 
@@ -132,6 +134,8 @@ You can then access the value with `$name` in the shell script.
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+
+Be carefull, in dev your directory will be detected as a local directory (because of its name). Do not remove the "package" script.
 
 ## Contributing
 
