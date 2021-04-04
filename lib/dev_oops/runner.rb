@@ -29,14 +29,14 @@ module DevOops
       Commands::EditScript,
       'edit',
       'edit SCRIPT_NAME',
-      'Edit a script config',
+      'Edit a script config'
     )
 
     register(
       Commands::EditScriptSh,
       'edit_sh',
       'edit_sh SCRIPT_NAME',
-      'Edit the script bash',
+      'Edit the script bash'
     )
 
     register(Commands::RemoveScript, 'rm', 'rm SCRIPT_NAME', 'Remove a script')
@@ -45,7 +45,7 @@ module DevOops
       Commands::LocalInstall,
       'install',
       'install',
-      'Create the neccesary local directory for the gem',
+      'Create the neccesary local directory for the gem'
     )
 
     def help(subcommand = nil)

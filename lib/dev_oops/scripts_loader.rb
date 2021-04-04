@@ -12,7 +12,7 @@ module DevOops
             "#{script_name} #{json_config['usage'] || ''}",
             script_location,
             json_config['args'],
-            dir,
+            dir
           )
         end
       end
@@ -21,10 +21,10 @@ module DevOops
       [
         GLOBAL_DIR,
         *Dir.pwd.gsub("#{Dir.home}/", '').split('/').reduce(
-          [],
+          []
         ) { |res, new_dir| [*res, "#{res.last}/#{new_dir}"] }.map do |dir|
           "#{Dir.home}#{dir}/dev_oops"
-        end.select { |dir| Dir.exist?(dir) },
+        end.select { |dir| Dir.exist?(dir) }
       ]
     end
 
@@ -42,7 +42,7 @@ module DevOops
           script_name,
           script_location,
           json_config,
-          File.dirname(filename),
+          File.dirname(filename)
         )
       end.reverse.reduce([]) do |res, script_config|
         if res.any? { |script_c| script_c.name == script_config.name }
@@ -67,7 +67,7 @@ module DevOops
             desc: arg['desc'] || '',
             aliases: arg['aliases'] || [],
             required: arg['required'] || false,
-            default: arg['default'],
+            default: arg['default']
           )
         end
 
