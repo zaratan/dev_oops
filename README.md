@@ -73,6 +73,14 @@ This gem will also try to find every `dev_oops` directory between the current di
 
 If there's a name collision, the closest to `current_dir` will be chosen.
 
+This search will also be done while editing or removing a script. It will use:
+
+1. The existing script with the same name
+2. Or, the `./dev_oops` directory if exists
+3. Or, the `$HOME/.dev_oops` directory otherwise
+
+All `edit`, `edit_sh` and `rm` commands (see lower) have a `--global` or `-g` option to bypass the search and use the `$HOME/.dev_oops` directory.
+
 #### Creating a local directory
 
 `bundle exec dev_oops local_install`.
