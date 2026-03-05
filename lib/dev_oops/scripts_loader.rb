@@ -67,14 +67,14 @@ module DevOops
     def self.build_action(config)
       Class.new(Thor::Group) do
         (config.args || []).each do |arg|
-          class_option(
-            arg["name"],
+          option_params = {
             desc: arg["desc"] || "",
             aliases: arg["aliases"] || [],
             required: arg["required"] || false,
             default: arg["default"],
-            boolean: arg["boolean"] || false,
-          )
+          }
+          option_params[:type] = :boolean if arg["boolean"]
+          class_option(arg["name"], **option_params)
         end
 
         define_singleton_method(:banner) { config.usage }
