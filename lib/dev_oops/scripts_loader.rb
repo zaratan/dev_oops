@@ -56,7 +56,8 @@ module DevOops
     def self.script_dir(script_name)
       scripts = self.load
       scripts.find { |script| script.name == script_name }&.dir ||
-        Dir.exist?("#{Dir.pwd}/dev_oops") && "#{Dir.pwd}/dev_oops" || GLOBAL_DIR
+        (Dir.exist?("#{Dir.pwd}/dev_oops") && "#{Dir.pwd}/dev_oops") ||
+        GLOBAL_DIR
     end
 
     def self.build_action(config)
@@ -67,24 +68,26 @@ module DevOops
             desc: arg['desc'] || '',
             aliases: arg['aliases'] || [],
             required: arg['required'] || false,
-            default: arg['default']
+            default: arg['default'],
+            boolean: arg['boolean'] || false
           )
         end
 
-        define_singleton_method('banner') { config.usage }
+        define_singleton_method(:banner) { config.usage }
 
-        define_method('perform') do
+        define_method(:perform) do
+          require 'pry'
+          binding.pry
           env_vars = options.map { |k, v| "#{k}=#{v}" }.join(' ')
 
-          if config.script_location && !config.script_location.empty?
-            location =
-              if config.script_location.start_with?('/')
-                config.script_location
-              else
-                "#{ENV['HOME']}/#{config.script_location}"
-              end
-            system("#{env_vars} #{ENV['SHELL']} -c #{location}")
-          end
+          return unless config.script_location && !config.script_location.empty?
+          location =
+            if config.script_location.start_with?('/')
+              config.script_location
+            else
+              "#{Dir.home}/#{config.script_location}"
+            end
+          system("#{env_vars} #{ENV.fetch('SHELL', nil)} -c #{location}")
         end
       end
     end

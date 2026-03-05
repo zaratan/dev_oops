@@ -4,8 +4,8 @@ module DevOops
     include Thor::Actions
     REGISTERED_CLASS_METHODS = {} # rubocop:disable Style/MutableConstant
 
-    CONFIG_DIR = "#{ENV['HOME']}/.dev_oops"
-    FileUtils.mkdir CONFIG_DIR unless Dir.exist?(CONFIG_DIR)
+    CONFIG_DIR = "#{Dir.home}/.dev_oops"
+    FileUtils.mkdir_p CONFIG_DIR
 
     def self.source_root
       "#{File.dirname(__FILE__)}/.."

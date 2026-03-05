@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.1] - 2025-12-17
+
+Accepting boolean args
+
+### Added
+
+- boolean args are supported
+
 ## [0.2.0] - 2021-04-03
 
 Refactoring architecture + Basic Documentation

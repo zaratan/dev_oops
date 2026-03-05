@@ -16,6 +16,7 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = Gem::Requirement.new('>= 2.6.0')
 
   spec.metadata['homepage_uri'] = spec.homepage
+  spec.metadata['rubygems_mfa_required'] = 'true'
 
   # spec.metadata["source_code_uri"] = "TODO: Put your gem's public repo URL here."
   # spec.metadata["changelog_uri"] = "TODO: Put your gem's CHANGELOG.md URL here."
@@ -32,16 +33,6 @@ Gem::Specification.new do |spec|
   spec.executables = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_runtime_dependency 'thor'
-  spec.add_runtime_dependency 'zeitwerk'
-
-  spec.add_development_dependency 'bundler'
-  spec.add_development_dependency 'bundler-audit', '> 0.6.0'
-  spec.add_development_dependency 'prettier'
-  spec.add_development_dependency 'pry-byebug'
-  spec.add_development_dependency 'rake'
-  spec.add_development_dependency 'rspec'
-  spec.add_development_dependency 'rubocop'
-  spec.add_development_dependency 'rubocop-performance'
-  spec.add_development_dependency 'solargraph'
+  spec.add_dependency 'thor'
+  spec.add_dependency 'zeitwerk'
 end
