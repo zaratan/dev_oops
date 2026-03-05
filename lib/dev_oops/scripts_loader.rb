@@ -80,8 +80,6 @@ module DevOops
         define_singleton_method(:banner) { config.usage }
 
         define_method(:perform) do
-          require "pry"
-          binding.pry
           env_vars = options.map { |k, v| "#{k}=#{v}" }.join(" ")
 
           return unless config.script_location && !config.script_location.empty?

@@ -4,7 +4,7 @@ inherit_from:
 inherit_gem:
   prettier: rubocop.yml
 
-require:
+plugins:
   - rubocop-performance
 
 AllCops:
