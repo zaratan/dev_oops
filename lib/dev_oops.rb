@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require 'dev_oops/version'
+require "dev_oops/version"
 
-require 'fileutils'
-require 'json'
-require 'thor'
+require "fileutils"
+require "json"
+require "thor"
 
-require 'zeitwerk'
+require "zeitwerk"
 loader = Zeitwerk::Loader.for_gem
 loader.setup # ready!
 

@@ -8,10 +8,10 @@ module DevOops
         "#{File.dirname(__FILE__)}/../../../"
       end
 
-      argument :script_name, desc: 'name of the script'
+      argument :script_name, desc: "name of the script"
       class_option :global,
-                   desc: 'force the script to be global',
-                   aliases: ['g'],
+                   desc: "force the script to be global",
+                   aliases: ["g"],
                    type: :boolean
 
       def self.banner

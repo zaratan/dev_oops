@@ -10,8 +10,8 @@ module DevOops
 
       argument :script_name
       class_option :global,
-                   desc: 'force the script to be global',
-                   aliases: ['g'],
+                   desc: "force the script to be global",
+                   aliases: ["g"],
                    type: :boolean
 
       def self.banner
@@ -26,8 +26,8 @@ module DevOops
             ScriptsLoader.script_dir(script_name)
           end
         path = "#{script_dir}/#{script_name}.json"
-        template 'templates/empty_script.tt', path unless File.exist?(path)
-        system("#{ENV['EDITOR'] || 'vim'} #{path}")
+        template "templates/empty_script.tt", path unless File.exist?(path)
+        system("#{ENV["EDITOR"] || "vim"} #{path}")
       end
     end
   end
