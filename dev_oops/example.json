@@ -1,0 +1,19 @@
+{
+  "desc": "Example command to demonstrate the gem usage",
+  "usage": "example [boolean_flag] [--test_me|-t]",
+  "args": [
+    {
+      "name": "boolean_flag",
+      "desc": "A boolean flag to demonstrate functionality",
+      "aliases": ["b"],
+      "required": false,
+      "boolean": true
+    },
+    {
+      "name": "test_me",
+      "desc": "An optional flag to test the command",
+      "aliases": ["t"],
+      "required": false
+    }
+  ]
+}

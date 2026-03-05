@@ -10,8 +10,8 @@ module DevOops
 
       argument :script_name
       class_option :global,
-                   desc: 'force the script to be global',
-                   aliases: ['g'],
+                   desc: "force the script to be global",
+                   aliases: ["g"],
                    type: :boolean
 
       def self.banner
@@ -28,7 +28,7 @@ module DevOops
         path = "#{script_dir}/#{script_name}.sh"
         create_file(path) unless File.exist?(path)
         FileUtils.chmod(0o750, path)
-        system("#{ENV['EDITOR'] || 'vim'} #{path}")
+        system("#{ENV["EDITOR"] || "vim"} #{path}")
       end
     end
   end

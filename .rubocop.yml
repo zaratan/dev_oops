@@ -1,10 +1,10 @@
 inherit_from:
-  - http://relaxed.ruby.style/rubocop.yml
+  - ./.rubocop-http---relaxed-ruby-style-rubocop-yml
 
 inherit_gem:
   prettier: rubocop.yml
 
-require:
+plugins:
   - rubocop-performance
 
 AllCops:
@@ -14,7 +14,7 @@ AllCops:
   SuggestExtensions: false
   Exclude:
     - "bin/*"
-    - 'vendor/**/*'
+    - "vendor/**/*"
     - "node_modules/**/*"
 
 Gemspec/RequiredRubyVersion:
